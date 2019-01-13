@@ -13,24 +13,8 @@ MainWindow::MainWindow ( BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builde
 {
     _builder->get_widget ( "equation", equation );
     _builder->get_widget ( "result", result );
-//         result->signal_enter_notify_event().connect(sigc::mem_fun(*this, &MainWindow::onAcceptResult));
-//     result->signal_editing_done().connect ( sigc::mem_fun ( *this, &MainWindow::onAcceptResult ) );
-//         result->signal_
     result->signal_activate().connect ( sigc::mem_fun ( *this, &MainWindow::onAcceptResult ) );
     srand ( time ( NULL ) );
-//         equation->set_text("120+120");
-//         /* Retrieve all widgets. */
-//         _builder->get_widget("rbRectangle", _rbRect);
-//         _builder->get_widget("rbEllipse", _rbEllipse);
-//         _builder->get_widget("rbTriangle", _rbTriangle);
-//         _builder->get_widget_derived("drawing_area", _drawingArea);
-//         /* Connect signals. */
-//         _rbRect->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::OnRadiobuttonClick));
-//         _rbEllipse->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::OnRadiobuttonClick));
-//         _rbTriangle->signal_clicked().connect(sigc::mem_fun(*this, &MainWindow::OnRadiobuttonClick));
-    /* Actions. */
-//         Glib::RefPtr<Gtk::Action>::cast_dynamic(_builder->get_object("action_quit"))->
-//             signal_activate().connect(sigc::mem_fun(*this, &MainWindow::OnQuit));
     generate();
 }
 
@@ -56,7 +40,8 @@ void MainWindow::onAcceptResult()
         int res = std::stoi ( result->get_text() );
 
         if ( res!=a+b ) {
-            Gtk::MessageDialog dlg ( *this, "Error" );
+            Gtk::MessageDialog dlg ( *this, "Неправильно. Должно быть " + std::to_string(a+b) );
+            dlg.set_title("Ошибочка вышла...");
             dlg.run();
         }
     } catch ( ... ) {
@@ -65,25 +50,6 @@ void MainWindow::onAcceptResult()
 //     int
     result->set_text ( "" );
     generate();
-//     equation->set_text ( "Accept" );
 }
 
 
-// MainWindow::MainWindow()
-// 	: Glib::ObjectBase("GtkhelloWindow")
-// 	, Gtk::Window()
-// // 	, headerbar(nullptr)
-// 	, equation(nullptr)
-// {
-//     using namespace std::experimental;
-//     filesystem::path uiPath(getRootPath());
-//     uiPath /= filesystem::path("share/gtksum/ui/MainWindow.glade");
-// 	builder = Gtk::Builder::create_from_file(uiPath.string());
-// // 	builder->get_widget("headerbar", headerbar);
-// 	builder->get_widget("equation", equation);
-// // 	add(*equation);
-// 	equation->show();
-// //     show_all();
-// // 	set_titlebar(*headerbar);
-// // 	headerbar->show();
-// }
