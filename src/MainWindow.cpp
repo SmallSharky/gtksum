@@ -22,7 +22,7 @@ MainWindow::MainWindow ( BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builde
 void MainWindow::generate()
 {
     int min, max;
-    min = -1000;
+    min = -999;
     max = 1000;
     a = ( rand() % ( max-min ) )+min;
     b = ( rand() % ( max-min ) )+min;
