@@ -45,6 +45,88 @@
             <property name="position">1</property>
           </packing>
         </child>
+        <child>
+          <object class="GtkInfoBar">
+            <property name="visible">True</property>
+            <property name="can_focus">False</property>
+            <child internal-child="action_area">
+              <object class="GtkButtonBox">
+                <property name="can_focus">False</property>
+                <property name="spacing">6</property>
+                <property name="layout_style">end</property>
+                <child>
+                  <placeholder/>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">-1</property>
+              </packing>
+            </child>
+            <child internal-child="content_area">
+              <object class="GtkBox">
+                <property name="can_focus">False</property>
+                <property name="spacing">16</property>
+                <child>
+                  <object class="GtkLabel" id="ScoreTotal">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">label</property>
+                    <attributes>
+                      <attribute name="foreground" value="#000000000000"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">0</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="ScoreBad">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">label</property>
+                    <attributes>
+                      <attribute name="foreground" value="#cccc00000000"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">1</property>
+                  </packing>
+                </child>
+                <child>
+                  <object class="GtkLabel" id="ScoreGood">
+                    <property name="visible">True</property>
+                    <property name="can_focus">False</property>
+                    <property name="label" translatable="yes">label</property>
+                    <attributes>
+                      <attribute name="foreground" value="#4e4e9a9a0606"/>
+                    </attributes>
+                  </object>
+                  <packing>
+                    <property name="expand">False</property>
+                    <property name="fill">True</property>
+                    <property name="position">2</property>
+                  </packing>
+                </child>
+              </object>
+              <packing>
+                <property name="expand">False</property>
+                <property name="fill">False</property>
+                <property name="position">-1</property>
+              </packing>
+            </child>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">2</property>
+          </packing>
+        </child>
       </object>
     </child>
   </object>

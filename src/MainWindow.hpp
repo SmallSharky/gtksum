@@ -14,10 +14,13 @@ public:
     void onAcceptResult();
     void generate();
     void accept();
+    void displayStats();
 private:
 // 	Gtk::HeaderBar *headerbar;
     int a, b;
 	Gtk::Label *equation;
+    Gtk::Label *ScoreGood, *ScoreBad, *ScoreTotal;
+    size_t good, bad, total;
     Gtk::Entry *result;
 	Glib::RefPtr<Gtk::Builder> _builder;
 };

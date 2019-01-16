@@ -12,12 +12,23 @@ MainWindow::MainWindow ( BaseObjectType* cobject, const Glib::RefPtr<Gtk::Builde
     Gtk::Window ( cobject ), _builder ( builder ), equation ( nullptr )
 {
     _builder->get_widget ( "equation", equation );
+    _builder->get_widget ( "ScoreBad", ScoreBad );
+    _builder->get_widget ( "ScoreGood", ScoreGood );
+    _builder->get_widget ( "ScoreTotal", ScoreTotal );
     _builder->get_widget ( "result", result );
     result->signal_activate().connect ( sigc::mem_fun ( *this, &MainWindow::onAcceptResult ) );
     srand ( time ( NULL ) );
+    bad = good = total = 0;
+    displayStats();
     generate();
 }
 
+void MainWindow::displayStats()
+{
+    ScoreBad->set_text( std::to_string(bad) );
+    ScoreGood->set_text( std::to_string(good) );
+    ScoreTotal->set_text( std::to_string(total) );
+}
 
 void MainWindow::generate()
 {
@@ -38,17 +49,21 @@ void MainWindow::onAcceptResult()
 {
     try {
         int res = std::stoi ( result->get_text() );
-
+        total++;
         if ( res!=a+b ) {
             Gtk::MessageDialog dlg ( *this, "Неправильно. Должно быть " + std::to_string(a+b) );
             dlg.set_title("Ошибочка вышла...");
             dlg.run();
+            bad++;
+        } else{
+            good++;
         }
     } catch ( ... ) {
 
     }
 //     int
     result->set_text ( "" );
+    displayStats();
     generate();
 }
 
